@@ -1,23 +1,15 @@
 public class payslip {
-    int payPeriod;
+    String payPeriod;
     int incomeTax;
     int netIncome;
     int superAmount;
     int grossIncome;
-    
 
-    public int getPayPeriod(int month)
-    {
-        payPeriod = month * grossIncome;
-        return payPeriod;
-    }
-
-    public int getGrossIncome(int annualSalary) {
+    public void setGrossIncome(int annualSalary) {
         grossIncome = annualSalary/12;
-        return grossIncome;
     }
 
-    public int getIncomeTax() {
+    public void setIncomeTax(int grossIncome) {
         if(grossIncome>=18201 && grossIncome<=37000)
         {
             double tempGross = (grossIncome-18200)*0.19;
@@ -38,37 +30,57 @@ public class payslip {
             double tempGross = (grossIncome-180000)*0.45;
             incomeTax = (int) tempGross+54232;
         }
+     
+    }
+
+    public void setNetIncome(int grossIncome, int incomeTax) {
+        netIncome = grossIncome-incomeTax;
+      
+    }
+
+    public void setSuperAmount(double superRate, int grossIncome) {
+        superRate = superRate / 100;
+        double tempAmount = superRate * grossIncome;
+        superAmount = (int) tempAmount;
+  
+    }
+
+    public void setPayPeriod(String payPeriod) {
+        this.payPeriod = payPeriod;
+    }
+
+    public int getGrossIncome() {
+        return grossIncome;
+    }
+
+    public int getIncomeTax() {
         return incomeTax;
     }
 
     public int getNetIncome() {
-        netIncome = grossIncome-incomeTax;
         return netIncome;
     }
 
-    public int getSuperAmount(int superRate) {
-        superAmount = superRate * grossIncome;
+    public String getPayPeriod() {
+        return payPeriod;
+    }
+
+    public int getSuperAmount() {
         return superAmount;
     }
 
-    public void setPayPeriod(int payPeriod) {
-        this.payPeriod = payPeriod;
+    public void displayPayslip()
+    {
+       
+        System.out.println("Pay Period: " + payPeriod);
+        System.out.println("Gross Income: " + grossIncome);
+        System.out.println("Income Tax: " + incomeTax);
+        System.out.println("Net Income: " + netIncome);
+        System.out.println("Super Amount: " + superAmount);
     }
 
-    public void setGrossIncome(int grossIncome) {
-        this.grossIncome = grossIncome;
+    public String toString()
+    {
+        return payPeriod + grossIncome + incomeTax + netIncome + superAmount;
     }
-
-    public void setIncomeTax(int incomeTax) {
-        this.incomeTax = incomeTax;
-    }
-
-    public void setNetIncome(int netIncome) {
-        this.netIncome = netIncome;
-    }
-
-    public void setSuperAmount(int superAmount) {
-        this.superAmount = superAmount;
-    }
-
 }
