@@ -1,3 +1,4 @@
+package Main;
 import java.util.*;
 
 public class validation {
@@ -6,13 +7,13 @@ public class validation {
         Scanner input = new Scanner(System.in);
         System.out.println(displayMessage);
         String userInput = "";
+        boolean valid=false;
         try
         { 
-            while(userInput.equals("")|| userInput.equals(" "))
+            while(valid==false)
             {
                 userInput = input.nextLine();
-                if(userInput.equals("")|| userInput.equals(" "))
-                System.out.println("Cannot be empty!");
+                valid = checkStringNotEmptyOrBlank(userInput);
             } 
         }
         catch(Exception e)
@@ -46,4 +47,13 @@ public class validation {
         }while(valid==false);
         return userInput; 
     } 
+
+    public boolean checkStringNotEmptyOrBlank(String userInput)
+    {
+        if(userInput.trim().equals("")|| userInput.trim().equals(" ")){
+                System.out.println("Cannot be empty!");
+                return false;
+        }
+        return true;
+    }
 }
