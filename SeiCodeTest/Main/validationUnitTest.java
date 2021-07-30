@@ -46,6 +46,39 @@ public class validationUnitTest {
         assertFalse(answer);
     }
 
-    
+    @Test
+    @DisplayName("Check the validation of input string should not contain number")
+    public void checkValidationInputStringShouldNotContainsNumber() {
+        boolean answer = validation.checkStringNotContainsNumber("abc123");
+        assertFalse(answer);
+    }
+
+    @Test
+    @DisplayName("Check the validation of input integer within range")
+    public void checkValidationInputIntegerWithinRange() {
+        boolean answer = validation.checkIntegerWithinRange(51, 0, 50);
+        assertFalse(answer);
+    }
+
+    @Test
+    @DisplayName("Check the validation of input string with correct length")
+    public void checkValidationInputStringLength() {
+        boolean answer = validation.checkStringLength("month", "asdasd");
+        assertFalse(answer);
+    }
+
+    @Test
+    @DisplayName("Check the correct return the string of pay period")
+    public void checkCorrectReturnMonth() {
+        String answer = validation.validMonth("Mar");
+        assertEquals(answer,"01 Mar - 31 Mar");
+    }
+
+    @Test
+    @DisplayName("Check the validation of input string is month")
+    public void checkValidationInputStringIsMonth() {
+        boolean answer = validation.checkInputIsMonth("mar");
+        assertTrue(answer);
+    }
 
 }
