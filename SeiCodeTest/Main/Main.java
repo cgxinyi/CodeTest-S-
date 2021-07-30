@@ -7,7 +7,7 @@ public class Main {
     public static void main(String[] args) {
 
         System.out.println("=======================================================================");
-        System.out.println("                     Welcome to Monthly Employee PaySlip Calculator                ");
+        System.out.println("            Welcome to Monthly Employee PaySlip Calculator            ");
         System.out.println("=======================================================================");
         setEmployee();
         getPayslip();   
@@ -25,8 +25,7 @@ public class Main {
         int annualSalary = valid.acceptIntegerInput("Please enter your annual salary:");;
         int superRate = valid.acceptIntegerInput("Please enter your super rate:");
         String start = valid.acceptStringInput("Please enter your payment start date:");;
-        employee = new employee(firstName,lastName,annualSalary,superRate,start);
-        
+        employee = new employee(firstName,lastName,annualSalary,superRate,start);  
     }
 
     public static void getPayslip()
