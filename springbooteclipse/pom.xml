@@ -42,8 +42,9 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-
+	
 	<build>
+	<finalName>codeseis</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>

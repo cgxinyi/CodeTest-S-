@@ -18,9 +18,9 @@ import java.util.*;
 
 
 @RestController
-@RequestMapping("/employee")
+
 public class employeeEndPoint {
-	@GetMapping("/postpayload")
+/*	@GetMapping("/postpayload")
     public String response(@RequestBody String payload) {
 		ArrayList<String> employee = new ArrayList<String>();
 		String [] singleEmployee = payload.split(",");
@@ -30,4 +30,9 @@ public class employeeEndPoint {
 		}
 	   return "s";
 	}
+*/
+	@GetMapping("/welcome")
+	public String welcome() {
+		return "welcome cg";
+	}	
 }

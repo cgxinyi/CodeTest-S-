@@ -1,5 +1,5 @@
-#Springboot web application
-read help.md in springbooteclipse
+#Springboot web application deployed on aws
+http://codeseis-env.eba-qckgkz8t.us-east-2.elasticbeanstalk.com/welcome
 
 #Dockerfile
 read help.md in springbooteclipse
