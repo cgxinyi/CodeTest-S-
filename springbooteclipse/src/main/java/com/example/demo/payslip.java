@@ -1,11 +1,27 @@
 package com.example.demo;
 
 public class payslip {
-    String payPeriod;
+    String fromDate;
+    String toDate;
     int incomeTax;
     int netIncome;
     int superAmount;
     int grossIncome;
+    
+    public payslip()
+    {
+    	
+    }
+    
+    public payslip(String fromD,String toD, int income,int net,int superA, int gross)
+    {
+    	fromDate = fromD;
+    	toDate = toD;
+    	incomeTax = income;
+    	netIncome = net;
+    	superAmount = superA;
+    	grossIncome = gross;
+    }
 
     public void setGrossIncome(int annualSalary) {
         double temp = (double) annualSalary/12;
@@ -48,10 +64,26 @@ public class payslip {
   
     }
 
-    public void setPayPeriod(String payPeriod) {
-        this.payPeriod = payPeriod;
+    public void setFromDate(String date)
+    {
+    	fromDate = date;
+    }
+    
+    public void setToDate(String date)
+    {
+    	toDate = date;
     }
 
+    
+    public String getFromDate()
+    {
+    	return fromDate;
+    }
+    
+    public String getToDate()
+    {
+    	return toDate;
+    }
     public int getGrossIncome() {
         return grossIncome;
     }
@@ -64,9 +96,7 @@ public class payslip {
         return netIncome;
     }
 
-    public String getPayPeriod() {
-        return payPeriod;
-    }
+   
 
     public int getSuperAmount() {
         return superAmount;
@@ -76,7 +106,8 @@ public class payslip {
     public void displayPayslip()
     {
        
-        System.out.println("Pay Period: " + payPeriod);
+        System.out.println("From Date: " + fromDate);
+        System.out.println("To Date: " + toDate);
         System.out.println("Gross Income: " + grossIncome);
         System.out.println("Income Tax: " + incomeTax);
         System.out.println("Net Income: " + netIncome);
@@ -85,6 +116,6 @@ public class payslip {
 
     public String toString()
     {
-        return payPeriod + grossIncome + incomeTax + netIncome + superAmount;
+        return fromDate + toDate + grossIncome + incomeTax + netIncome + superAmount;
     }
 }

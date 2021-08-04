@@ -5,16 +5,16 @@ public class employee {
     String lastName;
     int annualSalary;
     int superRate;
-    String paymentStartDate;
+    int paymentMonth;
 
-     
-     public employee(String first, String last, int annual,int superrate,String start)
+    
+     public employee(String first, String last, int annual,int superrate,int month)
      {
         firstName = first;
         lastName = last;
         annualSalary = annual;
         superRate = superrate;
-        paymentStartDate = start;
+        paymentMonth = month;
      }
 
      public String getFirstName() {
@@ -33,8 +33,8 @@ public class employee {
          return superRate;
      }
 
-     public String getPaymentStartDate() {
-         return paymentStartDate;
+     public int getPaymentMonth() {
+         return paymentMonth;
      }
 
      public void setFirstName(String firstName) {
@@ -55,8 +55,8 @@ public class employee {
          
      }
 
-     public void setPaymentStartDate(String paymentStartDate) {
-         this.paymentStartDate = paymentStartDate;
+     public void setPaymentStartDate(int paymentMonth) {
+         this.paymentMonth = paymentMonth;
      }
 
      public void displayEmployee()
@@ -66,12 +66,12 @@ public class employee {
          System.out.println("Last name: " + lastName);
          System.out.println("Annual Salary: " + annualSalary);
          System.out.println("Super Rate: " + superRate);
-         System.out.println("Payment Start Date: " + paymentStartDate);
+         System.out.println("Payment Month: " + paymentMonth);
      }
 
      public String toString()
      {
-         return firstName + lastName + annualSalary + superRate + paymentStartDate;
+         return firstName + lastName + annualSalary + superRate + paymentMonth;
      }
 
     
