@@ -6,8 +6,8 @@
 4. open docker desktop to run the application
 
 ### localhost 
-assumption superRate is input with integer(auto convert to decimal) 
---post method
+#assumption superRate is input with integer(auto convert to decimal) 
+#--post method
 curl -k -X POST -H "Content-Type:application/json" -d "[{\"firstName\":\"David\",\"lastName\":\"Rudd\",\"annualSalary\":\"60050\",\"paymentMonth\":\"1\",\"superRate\":\"3\"},{\"firstName\":\"Ryan\",\"lastName\":\"Chen\",\"annualSalary\":\"120000\",\"paymentMonth\":\"1\",\"superRate\":\"5\"}]" http://localhost:8080/postpayslip 
 
 # CodeTest-Seis
