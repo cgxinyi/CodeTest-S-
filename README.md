@@ -10,6 +10,9 @@
 ### --post method
 curl -k -X POST -H "Content-Type:application/json" -d "[{\"firstName\":\"David\",\"lastName\":\"Rudd\",\"annualSalary\":\"60050\",\"paymentMonth\":\"1\",\"superRate\":\"3\"},{\"firstName\":\"Ryan\",\"lastName\":\"Chen\",\"annualSalary\":\"120000\",\"paymentMonth\":\"1\",\"superRate\":\"5\"}]" http://localhost:8080/postpayslip 
 
+### deployed environment post
+curl -k -X POST -H "Content-Type:application/json" -d "[{\"firstName\":\"David\",\"lastName\":\"Rudd\",\"annualSalary\":\"60050\",\"paymentMonth\":\"1\",\"superRate\":\"3\"},{\"firstName\":\"Ryan\",\"lastName\":\"Chen\",\"annualSalary\":\"120000\",\"paymentMonth\":\"1\",\"superRate\":\"5\"}]" http://codeseis-env.eba-qckgkz8t.us-east-2.elasticbeanstalk.com/postpayslip
+
 # CodeTest-Seis
 
 This application is build with visual studio code
