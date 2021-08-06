@@ -8,7 +8,7 @@ import static org.junit.Assert.assertTrue;
 import org.junit.jupiter.api.Test;
 
 public class validationUnitTest {
-    private validation validation = new validation();
+    validation validation = new validation();
 
     @Test
     public void validInputStringCannotBeNull() {

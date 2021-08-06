@@ -1,20 +1,14 @@
 package com.example.demo.restapi;
 
-import static org.springframework.http.ResponseEntity.created;
-
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.example.demo.employee;
 import com.example.demo.payslip;
-import com.example.demo.validation;
-
 import net.minidev.json.JSONArray;
 import net.minidev.json.JSONObject;
 import net.minidev.json.JSONValue;
@@ -52,7 +46,7 @@ public class employeeEndPoint {
 		
 		for(int i = 0 ; i < employee.size() ; i++)
 		{
-			validation valid = new validation();
+			
 	        payslip.setGrossIncome(employee.get(i).getAnnualSalary());
 	        payslip.setSuperAmount(employee.get(i).getSuperRate(),payslip.getGrossIncome());
 	        payslip.setIncomeTax(payslip.getGrossIncome());

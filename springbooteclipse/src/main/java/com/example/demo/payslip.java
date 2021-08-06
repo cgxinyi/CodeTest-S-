@@ -29,7 +29,40 @@ public class payslip {
     }
 
     public void setIncomeTax(int grossIncome) {
-        if(grossIncome>=18201 && grossIncome<=37000)
+    	int num = (grossIncome >= 0) && (grossIncome <=18200) ? -1 : -1;
+    	num = (grossIncome >= 18201) && (grossIncome <=37000 ) ? 1 : num;
+    	num = (grossIncome >= 37001) && (grossIncome <=87000 ) ? 2 : num;
+    	num = (grossIncome >= 87001) && (grossIncome <=180000 ) ? 3 : num;
+    	num = (grossIncome >= 180001) ? 4 : num;
+    	
+    	double tempGross;
+    	switch (num) {
+        case 1 :
+        	tempGross = (double)(grossIncome-18200)*0.19;
+            incomeTax = (int) Math.round(tempGross);
+            System.out.println("1");
+           break;
+        case 2 :
+        	tempGross = (double)(grossIncome-37000)*0.325;
+            incomeTax = (int) Math.round(tempGross)+3572;
+            System.out.println("2");
+           break;
+        case 3 :
+        	tempGross = (double)(grossIncome-87000)*0.37;
+            incomeTax = (int) Math.round(tempGross)+19822;
+            System.out.println("3");
+           break;
+        case 4 :
+        	tempGross = (double)(grossIncome-180000)*0.45;
+            incomeTax = (int) Math.round(tempGross+54232);
+            System.out.println("4");
+            break;
+        default :
+        	 System.out.println("-1");
+          //for -1 do nothing;
+    }
+    	
+      /*  if(grossIncome>=18201 && grossIncome<=37000)
         {
             double tempGross = (double)(grossIncome-18200)*0.19;
             incomeTax = (int) Math.round(tempGross);
@@ -49,7 +82,7 @@ public class payslip {
             double tempGross = (double)(grossIncome-180000)*0.45;
             incomeTax = (int) Math.round(tempGross+54232);
         }
-     
+     */
     }
 
     public void setNetIncome(int grossIncome, int incomeTax) {

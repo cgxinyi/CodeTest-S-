@@ -92,7 +92,35 @@ public class validation {
     public boolean checkInputIsMonth(String userInput)
     {
         boolean valid = false;
-        if(userInput.toLowerCase().equals("jan"))
+        int num = userInput.toLowerCase().equals("jan")? 1 : -1;
+        num = userInput.toLowerCase().equals("feb")? 2 : num;
+        num = userInput.toLowerCase().equals("mar")? 3 : num;
+        num = userInput.toLowerCase().equals("apr")? 4 : num;
+        num = userInput.toLowerCase().equals("may")? 5 : num;
+        num = userInput.toLowerCase().equals("jun")? 6 : num;
+        num = userInput.toLowerCase().equals("jul")? 7 : num;
+        num = userInput.toLowerCase().equals("aug")? 8 : num;
+        num = userInput.toLowerCase().equals("sep")? 9 : num;
+        num = userInput.toLowerCase().equals("oct")? 10 : num;
+        num = userInput.toLowerCase().equals("nov")? 11 : num;
+        num = userInput.toLowerCase().equals("dec")? 12 : num;
+        
+        switch (num) {
+        case 1 :valid = true;
+        case 2 :valid = true;
+        case 3 :valid = true;
+        case 4 :valid = true;
+        case 5 :valid = true;
+        case 6 :valid = true;
+        case 7 :valid = true;
+        case 8 :valid = true;
+        case 9 :valid = true;
+        case 10 :valid = true;
+        case 11 :valid = true;
+        case 12 :valid = true;
+        default: valid=false;
+        }
+       /* if(userInput.toLowerCase().equals("jan"))
         {
             valid = true;
         }
@@ -145,7 +173,7 @@ public class validation {
             System.out.println("Please enter correct MMM format, for example: Jan");
             valid = false;
         }
-       
+       */
         return valid;
     }
 
@@ -153,7 +181,61 @@ public class validation {
     {
         String month="";
         String payperiod ="";
-        if(userInput.toLowerCase().equals("jan"))
+        
+        int num = userInput.toLowerCase().equals("jan")? 1 : -1;
+        num = userInput.toLowerCase().equals("feb")? 2 : num;
+        num = userInput.toLowerCase().equals("mar")? 3 : num;
+        num = userInput.toLowerCase().equals("apr")? 4 : num;
+        num = userInput.toLowerCase().equals("may")? 5 : num;
+        num = userInput.toLowerCase().equals("jun")? 6 : num;
+        num = userInput.toLowerCase().equals("jul")? 7 : num;
+        num = userInput.toLowerCase().equals("aug")? 8 : num;
+        num = userInput.toLowerCase().equals("sep")? 9 : num;
+        num = userInput.toLowerCase().equals("oct")? 10 : num;
+        num = userInput.toLowerCase().equals("nov")? 11 : num;
+        num = userInput.toLowerCase().equals("dec")? 12 : num;
+        
+        switch (num) {
+        case 1 :
+        	month="Jan";
+            payperiod ="01 "+ month + " - " + "31 " + month;
+        case 2 :
+        	month="Feb";
+            payperiod ="01 "+ month + " - " + "31 " + month;
+        case 3 :
+        	month="Mar";
+            payperiod ="01 "+ month + " - " + "31 " + month;
+        case 4 :
+        	month="Apr";
+            payperiod ="01 "+ month + " - " + "31 " + month;
+        case 5 :
+        	month="May";
+            payperiod ="01 "+ month + " - " + "31 " + month;
+        case 6 :
+        	month="Jun";
+            payperiod ="01 "+ month + " - " + "31 " + month;
+        case 7 :
+        	month="Jul";
+            payperiod ="01 "+ month + " - " + "31 " + month;
+        case 8 :
+        	month="Aug";
+            payperiod ="01 "+ month + " - " + "31 " + month;
+        case 9 :
+        	month="Sep";
+            payperiod ="01 "+ month + " - " + "31 " + month;
+        case 10 :
+        	month="Oct";
+            payperiod ="01 "+ month + " - " + "31 " + month;
+        case 11 :
+        	month="Nov";
+            payperiod ="01 "+ month + " - " + "31 " + month;
+        case 12 :
+        	month="Dec";
+            payperiod ="01 "+ month + " - " + "31 " + month;
+        default: payperiod="Please input correct month!";
+        }
+        
+        /*if(userInput.toLowerCase().equals("jan"))
         {
             month="Jan";
             payperiod ="01 "+ month + " - " + "31 " + month;
@@ -212,7 +294,7 @@ public class validation {
         {
             month="Dec";
             payperiod ="01 "+ month + " - " + "31 " + month;
-        }
+        }*/
         
         return payperiod;
     }
