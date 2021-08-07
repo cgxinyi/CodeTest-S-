@@ -6,7 +6,6 @@
 4. open docker desktop to run the application
 
 ### localhost 
-### assumption superRate is input with integer(auto convert to decimal) 
 ### --post method
 curl -k -X POST -H "Content-Type:application/json" -d "[{\"firstName\":\"David\",\"lastName\":\"Rudd\",\"annualSalary\":\"60050\",\"paymentMonth\":\"1\",\"superRate\":\"3\"},{\"firstName\":\"Ryan\",\"lastName\":\"Chen\",\"annualSalary\":\"120000\",\"paymentMonth\":\"1\",\"superRate\":\"5\"}]" http://localhost:8080/postpayslip 
 
@@ -27,6 +26,8 @@ Assumption that is made:
 2.This program only output one month pay slip and the month is whichever the user input the payment start month with MMM format.
 3.Annual Salary and super rate will not accept any string but numbers only.
 4.Annual Salary will not exceed 1,000,000,000.
+5.SuperRate is input with integer(auto convert to decimal). 
+6.Taxthreshold is dynamic, the number can be changed at employeeEndPoint.
 
 
 

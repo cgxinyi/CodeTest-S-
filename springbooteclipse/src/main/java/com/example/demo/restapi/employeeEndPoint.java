@@ -7,8 +7,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.ListOfTaxthreshold;
 import com.example.demo.employee;
 import com.example.demo.payslip;
+
 import net.minidev.json.JSONArray;
 import net.minidev.json.JSONObject;
 import net.minidev.json.JSONValue;
@@ -22,8 +24,11 @@ import java.util.*;
 @RestController
 
 public class employeeEndPoint {
+	private ListOfTaxthreshold taxthresholds = new ListOfTaxthreshold();
+	
 	@PostMapping(value="/postpayslip", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public JSONArray response(@RequestBody String payload){
+		
 		JSONArray jArray = (JSONArray) JSONValue.parse(payload);
 		payslip payslip=new payslip();
 		LocalDate currentdate = LocalDate.now();
@@ -49,7 +54,7 @@ public class employeeEndPoint {
 			
 	        payslip.setGrossIncome(employee.get(i).getAnnualSalary());
 	        payslip.setSuperAmount(employee.get(i).getSuperRate(),payslip.getGrossIncome());
-	        payslip.setIncomeTax(payslip.getGrossIncome());
+	        payslip.setIncomeTax(calculateIncomeTax(payslip.getGrossIncome()));
 	        payslip.setNetIncome(payslip.getGrossIncome(), payslip.getIncomeTax());
 	        Month currentMonth = currentdate.getMonth();
 	        int lastDay = Calendar.getInstance().getActualMaximum(Calendar.DATE);
@@ -85,6 +90,49 @@ public class employeeEndPoint {
 		
 		
 	   return result;
+	}
+	
+	public ListOfTaxthreshold loadTaxthreshold()
+	{
+		taxthresholds.addTaxthreshold(0, 0, 0);
+		taxthresholds.addTaxthreshold(18200, 0.19, 0);
+		taxthresholds.addTaxthreshold(37000, 0.325, 3572);
+		taxthresholds.addTaxthreshold(87000, 0.37, 19822);
+		taxthresholds.addTaxthreshold(180000, 0.45, 54232);
+		return taxthresholds;
+	}
+	
+	public int calculateIncomeTax(int grossIncome)
+	{
+		int incomeTax=0;
+		loadTaxthreshold();
+		int rangeCheck=1;
+		for(int i=0;i<taxthresholds.getNumberOfTaxthreshold();i++)
+		{
+			int lastIndex = taxthresholds.getNumberOfTaxthreshold()-1;
+			int calc = grossIncome - taxthresholds.getTaxthreshold(i).getTaxMax();
+			while (i != lastIndex && rangeCheck>0 && calc>0)
+			{
+				rangeCheck = grossIncome - taxthresholds.getTaxthreshold(i+1).getTaxMax();	
+				break;
+			}
+			
+			while(i==lastIndex)
+			{
+				rangeCheck=-1;
+				break;
+			}
+			double taxCent = taxthresholds.getTaxthreshold(i).getTaxCent();
+			int taxLump = taxthresholds.getTaxthreshold(i).getTaxLump();
+			
+			while(calc>0 && rangeCheck<0)
+			{
+				double tempGross = (double) calc*taxCent;
+	            incomeTax = (int) Math.round(tempGross)+taxLump;
+	            break;
+			}
+		}
+		return incomeTax;
 	}
 
 	@GetMapping("/welcome")
