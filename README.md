@@ -27,7 +27,7 @@ Assumption that is made:
 3.Annual Salary and super rate will not accept any string but numbers only.
 4.Annual Salary will not exceed 1,000,000,000.
 5.SuperRate is input with integer(auto convert to decimal). 
-6.Taxthreshold is dynamic, the number can be changed at employeeEndPoint.
+6.Taxthreshold is dynamic, the number can be changed at employeeEndPoint in taxrange, taxcent and taxlump.
 
 
 
