@@ -2,8 +2,9 @@
 ### Docker Desktop
 1. Install Docker Desktop & wsl backend at https://docs.docker.com/docker-for-windows/install/
 2. open cmd cd to project file directory
-3. run "docker build -t springio/gs-spring-boot-docker ."
-4. open docker desktop to run the application
+3. run "docker build -t "name" ."
+4. docker run -p8080:8080 "name"
+5. test if it runs on localhost:8080
 
 ### localhost 
 ### --post method
