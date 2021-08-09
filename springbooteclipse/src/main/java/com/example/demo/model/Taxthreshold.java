@@ -1,11 +1,11 @@
-package com.example.demo;
+package com.example.demo.model;
 
-public class taxthreshold {
+public class Taxthreshold {
 	private int taxMaxOfEachStages;
 	private double taxCentForOverDollar;
 	private int taxLumpBeforeCurrentStage;
 	
-	public taxthreshold(int taxMax , double taxCent, int taxLump) 
+	public Taxthreshold(int taxMax , double taxCent, int taxLump) 
 	{
 		taxMaxOfEachStages = taxMax;
 		taxCentForOverDollar = taxCent;

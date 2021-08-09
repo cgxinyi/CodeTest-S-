@@ -1,6 +1,6 @@
-package com.example.demo;
+package com.example.demo.model;
 
-public class payslip {
+public class Payslip {
     String fromDate;
     String toDate;
     int incomeTax;
@@ -8,12 +8,12 @@ public class payslip {
     int superAmount;
     int grossIncome;
     
-    public payslip()
+    public Payslip()
     {
     	
     }
     
-    public payslip(String fromD,String toD, int income,int net,int superA, int gross)
+    public Payslip(String fromD,String toD, int income,int net,int superA, int gross)
     {
     	fromDate = fromD;
     	toDate = toD;

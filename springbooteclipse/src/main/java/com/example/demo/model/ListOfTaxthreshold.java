@@ -1,33 +1,33 @@
-package com.example.demo;
+package com.example.demo.model;
 
 import java.util.ArrayList;
 
 public class ListOfTaxthreshold {
-	private ArrayList<taxthreshold> taxthresholds;
+	private ArrayList<Taxthreshold> taxthresholds;
 	
 	public ListOfTaxthreshold()
 	{
-		taxthresholds=new ArrayList<taxthreshold>();
+		taxthresholds=new ArrayList<Taxthreshold>();
 	}
 	
-	public ListOfTaxthreshold(ArrayList<taxthreshold> newTaxthreshold) 
+	public ListOfTaxthreshold(ArrayList<Taxthreshold> newTaxthreshold) 
 	{
 		taxthresholds=newTaxthreshold;
 	}
 	
-	public void setTaxthreshold(ArrayList<taxthreshold> newTaxthreshold)
+	public void setTaxthreshold(ArrayList<Taxthreshold> newTaxthreshold)
 	{
 		taxthresholds = newTaxthreshold;
 	}
 	
-	public ArrayList<taxthreshold> getListOfTaxthreshold()
+	public ArrayList<Taxthreshold> getListOfTaxthreshold()
 	{
 		return taxthresholds;
 	}
 	
 	public void addTaxthreshold(int taxMax , double taxCent, int taxLump)
 	{
-		taxthreshold newTaxthreshold = new taxthreshold(taxMax, taxCent, taxLump);
+		Taxthreshold newTaxthreshold = new Taxthreshold(taxMax, taxCent, taxLump);
 		taxthresholds.add(newTaxthreshold);
 	}
 	
@@ -36,7 +36,7 @@ public class ListOfTaxthreshold {
 		return taxthresholds.size();
 	}
 	
-	public taxthreshold getTaxthreshold(int index)
+	public Taxthreshold getTaxthreshold(int index)
     {
         return taxthresholds.get(index);
     }

@@ -1,8 +1,8 @@
-package com.example.demo;
+package com.example.demo.model;
 
-import java.util.*;
+import java.util.Scanner;
 
-public class validation {
+public class Validation {
     public String acceptStringInput(String displayMessage)
     {
         Scanner input = new Scanner(System.in);
