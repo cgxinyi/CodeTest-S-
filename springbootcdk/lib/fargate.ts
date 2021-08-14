@@ -6,7 +6,7 @@ import * as ecs_patterns from '@aws-cdk/aws-ecs-patterns';
 import { CdkPipeline, SimpleSynthAction } from '@aws-cdk/pipelines';
 import * as codepipeline from '@aws-cdk/aws-codepipeline';
 import * as codepipeline_actions from '@aws-cdk/aws-codepipeline-actions';
-import { CodeSeisApp } from './pipeline';
+import { WorkshopPipelineStage } from './pipeline';
 
 export class SpringbootfagateStack extends cdk.Stack {
   constructor(scope: cdk.Construct, id: string, props?: cdk.StackProps) {
@@ -46,7 +46,7 @@ export class SpringbootfagateStack extends cdk.Stack {
         sourceAction: new codepipeline_actions.GitHubSourceAction({
           actionName: 'GitHub',
           output: sourceArtifact,
-          oauthToken: SecretValue.secretsManager('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'),
+          oauthToken: SecretValue.plainText('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'),
           trigger: codepipeline_actions.GitHubTrigger.POLL,
           // Replace these with your actual GitHub project info
           owner: 'cgxinyi',
@@ -60,12 +60,8 @@ export class SpringbootfagateStack extends cdk.Stack {
         }),
       });
   
-      pipeline.addApplicationStage(new CodeSeisApp(this, 'Prod',{
-        env: {
-          account: '123456789012',
-          region: 'eu-west-1',
-        }
-      }));
+      const deploy = new WorkshopPipelineStage(this, 'Deploy');
+        pipeline.addApplicationStage(deploy);
       
       new cdk.CfnOutput(this, "loadBalancerUrl", {
         value: Service.loadBalancer.loadBalancerDnsName,

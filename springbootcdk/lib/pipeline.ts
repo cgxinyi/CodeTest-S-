@@ -1,10 +1,10 @@
-import { Construct, Stack, StackProps, Stage, StageProps } from '@aws-cdk/core';
-import * as codepipeline from '@aws-cdk/aws-codepipeline';
-import { CdkPipeline } from '@aws-cdk/pipelines';
+import { SpringbootfagateStack } from './fargate';
+import { Stage, Construct, StageProps } from '@aws-cdk/core';
 
-export class CodeSeisApp extends Stage{
-    constructor(scope: Construct, id: string, props?: StackProps) {
-      super(scope, id, props);
+export class WorkshopPipelineStage extends Stage {
+    constructor(scope: Construct, id: string, props?: StageProps) {
+        super(scope, id, props);
 
+        new SpringbootfagateStack(this, 'Service');
     }
 }
