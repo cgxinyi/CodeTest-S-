@@ -1,19 +1,19 @@
 package com.example.demo.service;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThrows;
 
-import org.junit.Before;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.annotation.DirtiesContext.ClassMode;
+import com.example.demo.service.PayslipService;
 
-import com.example.demo.model.Payslip;
-
+@SpringBootTest
+@AutoConfigureMockMvc(addFilters = false) 
+@DirtiesContext(classMode = ClassMode.AFTER_EACH_TEST_METHOD)
 public class PayslipServiceUnit {
 	
 	@InjectMocks

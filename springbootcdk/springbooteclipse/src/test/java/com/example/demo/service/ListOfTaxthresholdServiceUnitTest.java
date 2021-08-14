@@ -10,11 +10,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.springframework.util.Assert;
-import org.hamcrest.collection.IsEmptyCollection;
 import com.example.demo.model.ListOfTaxthreshold;
-import com.example.demo.model.Payslip;
 import com.example.demo.model.Taxthreshold;
 
 public class ListOfTaxthresholdServiceUnitTest {

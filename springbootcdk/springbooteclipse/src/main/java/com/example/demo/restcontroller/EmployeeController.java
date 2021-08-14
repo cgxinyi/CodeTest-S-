@@ -1,6 +1,8 @@
 package com.example.demo.restcontroller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,9 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.model.Employee;
-import com.example.demo.model.ListOfTaxthreshold;
 import com.example.demo.model.Payslip;
-import com.example.demo.service.ListOfTaxthresholdService;
 import com.example.demo.service.PayslipService;
 import com.example.demo.service.PayslipServiceImpl;
 
@@ -26,7 +26,7 @@ import java.util.*;
 
 
 @RestController
-
+@ComponentScan
 public class EmployeeController {
 	@Autowired
 	private PayslipService payslipService = new PayslipServiceImpl();
@@ -96,7 +96,6 @@ public class EmployeeController {
 		
 	   return result;
 	}
-	
 	
 	
 

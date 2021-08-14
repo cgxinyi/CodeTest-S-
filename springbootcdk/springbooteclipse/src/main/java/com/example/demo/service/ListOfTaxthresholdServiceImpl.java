@@ -11,7 +11,6 @@ import com.example.demo.model.Taxthreshold;
 @Service
 public class ListOfTaxthresholdServiceImpl implements ListOfTaxthresholdService {
 	
-	@Autowired
 	private ListOfTaxthreshold listOfTaxthreshold = new ListOfTaxthreshold();
 
 	@Override

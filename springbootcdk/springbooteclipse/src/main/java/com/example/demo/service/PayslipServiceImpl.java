@@ -9,10 +9,9 @@ import com.example.demo.model.Payslip;
 @Service
 public class PayslipServiceImpl implements PayslipService {
 	
-	@Autowired
+
 	private ListOfTaxthresholdService listOfTaxthresholdService = new ListOfTaxthresholdServiceImpl();
 	
-	@Autowired
 	private Payslip payslip;
 	
 	@Override

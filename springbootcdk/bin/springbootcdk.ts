@@ -3,6 +3,7 @@ import 'source-map-support/register';
 import * as cdk from '@aws-cdk/core';
 import { SpringbootfagateStack } from '../lib/fargate';
 
+
 const app = new cdk.App();
 new SpringbootfagateStack(app, 'SpringbootfagateStack', {
   /* If you don't specify 'env', this stack will be environment-agnostic.
@@ -15,7 +16,9 @@ new SpringbootfagateStack(app, 'SpringbootfagateStack', {
 
   /* Uncomment the next line if you know exactly what Account and Region you
    * want to deploy the stack to. */
-  env: { account: "739517360361", region: "us-east-2" },
+  //env: { account: "", region: "us-east-2" },
  
   /* For more information, see https://docs.aws.amazon.com/cdk/latest/guide/environments.html */
 });
+
+app.synth();
