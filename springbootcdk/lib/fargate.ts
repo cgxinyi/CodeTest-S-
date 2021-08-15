@@ -61,7 +61,7 @@ export class SpringbootfagateStack extends cdk.Stack {
       });
   
       const deploy = new WorkshopPipelineStage(this, 'Deploy');
-        pipeline.addApplicationStage(deploy);
+      pipeline.addApplicationStage(deploy);
       
       new cdk.CfnOutput(this, "loadBalancerUrl", {
         value: Service.loadBalancer.loadBalancerDnsName,
@@ -71,9 +71,3 @@ export class SpringbootfagateStack extends cdk.Stack {
 
   
 }
-
-const app = new cdk.App();
-
-new SpringbootfagateStack(app, 'Springbootcdk');
-
-app.synth();
