@@ -46,7 +46,7 @@ export class SpringbootfagateStack extends cdk.Stack {
         sourceAction: new codepipeline_actions.GitHubSourceAction({
           actionName: 'GitHub',
           output: sourceArtifact,
-          oauthToken: SecretValue.plainText('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'),
+          oauthToken: SecretValue.secretsManager('github-oauth'),
           trigger: codepipeline_actions.GitHubTrigger.POLL,
           // Replace these with your actual GitHub project info
           owner: 'cgxinyi',
@@ -54,9 +54,8 @@ export class SpringbootfagateStack extends cdk.Stack {
         }), synthAction: SimpleSynthAction.standardNpmSynth({
           sourceArtifact,
           cloudAssemblyArtifact,
-          // Use this if you need a build step (if you're not using ts-node
-          // or if you have TypeScript Lambdas that need to be compiled).
           buildCommand: 'npm run build',
+          
         }),
       });
   
@@ -71,3 +70,5 @@ export class SpringbootfagateStack extends cdk.Stack {
 
   
 }
+
+
