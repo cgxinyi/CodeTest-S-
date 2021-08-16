@@ -43,10 +43,11 @@ export class SpringbootfagateStack extends cdk.Stack {
       const pipeline = new CdkPipeline(this, 'SeisPipeline', {
         pipelineName: 'SeisPipeline',
         cloudAssemblyArtifact,
+       
         sourceAction: new codepipeline_actions.GitHubSourceAction({
           actionName: 'GitHub',
           output: sourceArtifact,
-          oauthToken: cdk.SecretValue.plainText('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'),
+          oauthToken: cdk.SecretValue.plainText('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'),
           trigger: codepipeline_actions.GitHubTrigger.POLL,
           // Replace these with your actual GitHub project info
           owner: 'cgxinyi',
@@ -55,11 +56,14 @@ export class SpringbootfagateStack extends cdk.Stack {
         }), synthAction: SimpleSynthAction.standardNpmSynth({
           sourceArtifact,
           cloudAssemblyArtifact,
+          subdirectory: 'CodeTest-Seis/springbootcdk/',
           environment: {
             privileged: true,
           },
-          buildCommand: 'cd ../springbootcdk && npm install & npm run build',
           
+          installCommand: 'npm install',
+          buildCommand: 'npm run build',
+          synthCommand:'cdk synth'
         }),
       });
   
