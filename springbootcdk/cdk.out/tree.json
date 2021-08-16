@@ -1708,7 +1708,7 @@
                                   "Owner": "cgxinyi",
                                   "Repo": "CodeTest-Seis",
                                   "Branch": "main",
-                                  "OAuthToken": "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",
+                                  "OAuthToken": "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",
                                   "PollForSourceChanges": true
                                 },
                                 "runOrder": 1
@@ -1740,7 +1740,7 @@
                                   "ProjectName": {
                                     "Ref": "SeisPipelineBuildSynthCdkBuildProject9749751E"
                                   },
-                                  "EnvironmentVariables": "[{\"name\":\"_PROJECT_CONFIG_HASH\",\"type\":\"PLAINTEXT\",\"value\":\"fee3b095682f4402a8260176c267ebfc3000c94c2dde6915098a9a388283948c\"}]"
+                                  "EnvironmentVariables": "[{\"name\":\"_PROJECT_CONFIG_HASH\",\"type\":\"PLAINTEXT\",\"value\":\"418c4710c6e44756ae86061060e4cda194d2c34bc6c85a5f1b58957d4dc51cb0\"}]"
                                 },
                                 "runOrder": 1,
                                 "roleArn": {
@@ -2274,7 +2274,7 @@
                                     },
                                     "source": {
                                       "type": "CODEPIPELINE",
-                                      "buildSpec": "{\n  \"version\": \"0.2\",\n  \"phases\": {\n    \"pre_build\": {\n      \"commands\": [\n        \"cd springbootcdk\",\n        \"npm install\"\n      ]\n    },\n    \"build\": {\n      \"commands\": [\n        \"npm run build\",\n        \"npx cdk synth\"\n      ]\n    }\n  },\n  \"artifacts\": {\n    \"base-directory\": \"springbootcdk/cdk.out\",\n    \"files\": \"**/*\"\n  }\n}"
+                                      "buildSpec": "{\n  \"version\": \"0.2\",\n  \"phases\": {\n    \"pre_build\": {\n      \"commands\": [\n        \"cd springbootcdk\",\n        \"npm install\"\n      ]\n    },\n    \"build\": {\n      \"commands\": [\n        \"npm run build\",\n        \"npm run cdk synth\"\n      ]\n    }\n  },\n  \"artifacts\": {\n    \"base-directory\": \"springbootcdk/cdk.out\",\n    \"files\": \"**/*\"\n  }\n}"
                                     },
                                     "encryptionKey": {
                                       "Fn::GetAtt": [

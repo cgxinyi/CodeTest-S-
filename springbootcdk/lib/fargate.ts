@@ -7,6 +7,7 @@ import { CdkPipeline, SimpleSynthAction } from '@aws-cdk/pipelines';
 import * as codepipeline from '@aws-cdk/aws-codepipeline';
 import * as codepipeline_actions from '@aws-cdk/aws-codepipeline-actions';
 import { WorkshopPipelineStage } from './pipeline';
+import { LinuxParameters } from '@aws-cdk/aws-ecs';
 
 export class SpringbootfagateStack extends cdk.Stack {
   constructor(scope: cdk.Construct, id: string, props?: cdk.StackProps) {
@@ -43,16 +44,18 @@ export class SpringbootfagateStack extends cdk.Stack {
       const pipeline = new CdkPipeline(this, 'SeisPipeline', {
         pipelineName: 'SeisPipeline',
         cloudAssemblyArtifact,
-       
+        
         sourceAction: new codepipeline_actions.GitHubSourceAction({
+          
           actionName: 'GitHub',
           output: sourceArtifact,
-          oauthToken: cdk.SecretValue.plainText('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'),
+          oauthToken: cdk.SecretValue.plainText('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'),
           trigger: codepipeline_actions.GitHubTrigger.POLL,
           // Replace these with your actual GitHub project info
           owner: 'cgxinyi',
           repo: 'CodeTest-Seis',
           branch: 'main',
+          
         }), synthAction: SimpleSynthAction.standardNpmSynth({
           sourceArtifact,
           cloudAssemblyArtifact,
@@ -63,7 +66,8 @@ export class SpringbootfagateStack extends cdk.Stack {
           
           installCommand: 'npm install',
           buildCommand: 'npm run build',
-       
+          synthCommand:'npm run cdk synth',
+          
         }),
       });
   
