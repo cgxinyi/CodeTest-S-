@@ -1,0 +1,34 @@
+{
+  "version": "13.0.0",
+  "files": {
+    "8a480dd2226d34443a7adc0a162e7ff773d026c57e831921ad5aee482ce793cf": {
+      "source": {
+        "path": "SpringbootfagateStack.template.json",
+        "packaging": "file"
+      },
+      "destinations": {
+        "739517360361-us-east-2": {
+          "bucketName": "cdk-hnb659fds-assets-739517360361-us-east-2",
+          "objectKey": "8a480dd2226d34443a7adc0a162e7ff773d026c57e831921ad5aee482ce793cf.json",
+          "region": "us-east-2",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::739517360361:role/cdk-hnb659fds-file-publishing-role-739517360361-us-east-2"
+        }
+      }
+    }
+  },
+  "dockerImages": {
+    "769910c4eaf9352764b3778875128e39219b2f75911784da9a7a7590184b5020": {
+      "source": {
+        "directory": "asset.769910c4eaf9352764b3778875128e39219b2f75911784da9a7a7590184b5020"
+      },
+      "destinations": {
+        "739517360361-us-east-2": {
+          "repositoryName": "cdk-hnb659fds-container-assets-739517360361-us-east-2",
+          "imageTag": "769910c4eaf9352764b3778875128e39219b2f75911784da9a7a7590184b5020",
+          "region": "us-east-2",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::739517360361:role/cdk-hnb659fds-image-publishing-role-739517360361-us-east-2"
+        }
+      }
+    }
+  }
+}
