@@ -47,7 +47,7 @@ export class SpringbootfagateStack extends cdk.Stack {
         sourceAction: new codepipeline_actions.GitHubSourceAction({
           actionName: 'GitHub',
           output: sourceArtifact,
-          oauthToken: cdk.SecretValue.plainText('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'),
+          oauthToken: cdk.SecretValue.plainText('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'),
           trigger: codepipeline_actions.GitHubTrigger.POLL,
           // Replace these with your actual GitHub project info
           owner: 'cgxinyi',
@@ -63,7 +63,7 @@ export class SpringbootfagateStack extends cdk.Stack {
           
           installCommand: 'npm install',
           buildCommand: 'npm run build',
-          synthCommand:'cdk synth'
+       
         }),
       });
   
