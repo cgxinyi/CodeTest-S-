@@ -54,6 +54,9 @@ export class SpringbootfagateStack extends cdk.Stack {
         }), synthAction: SimpleSynthAction.standardNpmSynth({
           sourceArtifact,
           cloudAssemblyArtifact,
+          environment: {
+            privileged: true,
+          },
           buildCommand: 'npm run build',
           
         }),
