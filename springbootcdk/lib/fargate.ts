@@ -46,18 +46,19 @@ export class SpringbootfagateStack extends cdk.Stack {
         sourceAction: new codepipeline_actions.GitHubSourceAction({
           actionName: 'GitHub',
           output: sourceArtifact,
-          oauthToken: cdk.SecretValue.plainText('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'),
+          oauthToken: cdk.SecretValue.plainText('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'),
           trigger: codepipeline_actions.GitHubTrigger.POLL,
           // Replace these with your actual GitHub project info
           owner: 'cgxinyi',
           repo: 'CodeTest-Seis',
+          branch: 'main',
         }), synthAction: SimpleSynthAction.standardNpmSynth({
           sourceArtifact,
           cloudAssemblyArtifact,
           environment: {
             privileged: true,
           },
-          buildCommand: 'cd ../springbootcdk && npm run build',
+          buildCommand: 'cd ../springbootcdk && npm install & npm run build',
           
         }),
       });
