@@ -29,7 +29,7 @@ export class SpringbootfagateStack extends cdk.Stack {
         cpu: 512,
         desiredCount: 2,
         taskImageOptions: {
-          image: ecs.ContainerImage.fromAsset("../springbootcdk/springbooteclipse/"),
+          image: ecs.ContainerImage.fromAsset("../springbooteclipse/"),
           containerPort: 8080
         },
         
@@ -49,7 +49,7 @@ export class SpringbootfagateStack extends cdk.Stack {
           
           actionName: 'GitHub',
           output: sourceArtifact,
-          oauthToken: cdk.SecretValue.plainText('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'),
+          oauthToken: cdk.SecretValue.plainText('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'),
           trigger: codepipeline_actions.GitHubTrigger.POLL,
           // Replace these with your actual GitHub project info
           owner: 'cgxinyi',
@@ -59,10 +59,12 @@ export class SpringbootfagateStack extends cdk.Stack {
         }), synthAction: SimpleSynthAction.standardNpmSynth({
           sourceArtifact,
           cloudAssemblyArtifact,
-          subdirectory: 'springbootcdk',
-      
-          buildCommand: 'npm run build',          
-        
+          subdirectory: 'springbooteclipse',
+          installCommand:'npm install -g aws-cdk typescript',
+          buildCommand: 'mvn -Dmaven.test.skip=true install && cd ../springbootcdk && npm install',
+          
+          
+          
           environment: {
             privileged: true,
           }
