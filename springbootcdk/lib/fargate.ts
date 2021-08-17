@@ -61,7 +61,7 @@ export class SpringbootfagateStack extends cdk.Stack {
           cloudAssemblyArtifact,
           subdirectory: 'springbooteclipse',
           installCommand:'npm install -g aws-cdk typescript',
-          buildCommand: 'mvn -Dmaven.test.skip=true install && cd ../springbootcdk && npm install',
+          buildCommand: 'mvn install && cd ../springbootcdk && npm install',
           
           
           
