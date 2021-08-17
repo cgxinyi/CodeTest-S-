@@ -1147,8 +1147,8 @@
                   "Owner": "cgxinyi",
                   "Repo": "CodeTest-Seis",
                   "Branch": "main",
-                  "OAuthToken": "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",
-                  "PollForSourceChanges": true
+                  "OAuthToken": "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",
+                  "PollForSourceChanges": false
                 },
                 "Name": "GitHub",
                 "OutputArtifacts": [

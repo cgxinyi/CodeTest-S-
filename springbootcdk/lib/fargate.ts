@@ -13,7 +13,7 @@ export class SpringbootfagateStack extends cdk.Stack {
   constructor(scope: cdk.Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
-
+    
     // The code that defines your stack goes here
     const vpc = new ec2.Vpc(this,"MyVpc",{
       maxAzs:2
@@ -49,8 +49,8 @@ export class SpringbootfagateStack extends cdk.Stack {
           
           actionName: 'GitHub',
           output: sourceArtifact,
-          oauthToken: cdk.SecretValue.plainText('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'),
-          trigger: codepipeline_actions.GitHubTrigger.POLL,
+          oauthToken: cdk.SecretValue.plainText('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'),
+          trigger: codepipeline_actions.GitHubTrigger.NONE,
           // Replace these with your actual GitHub project info
           owner: 'cgxinyi',
           repo: 'CodeTest-Seis',
