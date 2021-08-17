@@ -44,12 +44,12 @@ export class SpringbootfagateStack extends cdk.Stack {
       const pipeline = new CdkPipeline(this, 'SeisPipeline', {
         pipelineName: 'SeisPipeline',
         cloudAssemblyArtifact,
-        
+        selfMutating:true,
         sourceAction: new codepipeline_actions.GitHubSourceAction({
           
           actionName: 'GitHub',
           output: sourceArtifact,
-          oauthToken: cdk.SecretValue.plainText('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'),
+          oauthToken: cdk.SecretValue.plainText('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'),
           trigger: codepipeline_actions.GitHubTrigger.POLL,
           // Replace these with your actual GitHub project info
           owner: 'cgxinyi',
@@ -60,14 +60,12 @@ export class SpringbootfagateStack extends cdk.Stack {
           sourceArtifact,
           cloudAssemblyArtifact,
           subdirectory: 'springbootcdk',
+      
+          buildCommand: 'npm run build',          
+        
           environment: {
             privileged: true,
-          },
-          
-          installCommand: 'npm install',
-          buildCommand: 'npm run build',
-          synthCommand:'npm run cdk synth',
-          
+          }
         }),
       });
   
@@ -80,6 +78,8 @@ export class SpringbootfagateStack extends cdk.Stack {
       });
   }
 
+
+  
   
 }
 

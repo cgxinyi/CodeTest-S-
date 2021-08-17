@@ -6,7 +6,9 @@ export class WorkshopPipelineStage extends Stage {
     constructor(scope: Construct, id: string, props?: StageProps) {
         super(scope, id, props);
 
-        new SpringbootcdkStack (this, "Service");
+        new SpringbootcdkStack (this, "Service",{
+            
+        });
     }
 
     
