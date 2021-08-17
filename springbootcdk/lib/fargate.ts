@@ -49,7 +49,7 @@ export class SpringbootfagateStack extends cdk.Stack {
           
           actionName: 'GitHub',
           output: sourceArtifact,
-          oauthToken: cdk.SecretValue.plainText('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'),
+          oauthToken: cdk.SecretValue.plainText('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'),
           trigger: codepipeline_actions.GitHubTrigger.POLL,
           // Replace these with your actual GitHub project info
           owner: 'cgxinyi',
