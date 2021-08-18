@@ -99,8 +99,8 @@ public class EmployeeController {
 	
 	
 
-	@GetMapping("/welcome")
+	/*@GetMapping("/welcome")
 	public String welcome() {
 		return "welcome cg";
-	}	
+	}	*/
 }
