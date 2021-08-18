@@ -900,7 +900,7 @@
                           {
                             "essential": true,
                             "image": {
-                              "Fn::Sub": "739517360361.dkr.ecr.us-east-2.${AWS::URLSuffix}/cdk-hnb659fds-container-assets-739517360361-us-east-2:657b7c2beb4caf0b5e72419361e10413e996b94670d7f4e6f45b320d39aed68c"
+                              "Fn::Sub": "739517360361.dkr.ecr.us-east-2.${AWS::URLSuffix}/cdk-hnb659fds-container-assets-739517360361-us-east-2:e8f0d5d640f170185b5d5d6a4219bb6e2f2bde8d38520938a76fe09c989dea67"
                             },
                             "name": "web",
                             "portMappings": [

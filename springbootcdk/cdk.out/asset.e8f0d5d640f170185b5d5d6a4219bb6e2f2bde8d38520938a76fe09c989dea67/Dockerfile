@@ -1,4 +1,5 @@
 FROM openjdk:11
+RUN maven install
 EXPOSE 8080
 ARG JAR_FILE=target/codeseis.jar
 ADD ${JAR_FILE} codeseis.jar

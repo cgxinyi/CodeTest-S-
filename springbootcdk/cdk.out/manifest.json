@@ -30,7 +30,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::739517360361:role/cdk-hnb659fds-deploy-role-739517360361-us-east-2",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::739517360361:role/cdk-hnb659fds-cfn-exec-role-739517360361-us-east-2",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-739517360361-us-east-2/479ccb68fac216b1b7b2182fcd91ce25aa8c2aca367474329065c5cf5be4d0ba.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-739517360361-us-east-2/bbea4518ccb207938611bb503b3e6b354335d1fa24480897a2417b5796a16023.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -1828,7 +1828,7 @@
             "type": "aws:cdk:logicalId",
             "data": "loadBalancerUrl",
             "trace": [
-              "new SpringbootfagateStack (C:\\Users\\cgxinyi\\Documents\\GitHub\\CodeTest-Seis\\springbootcdk\\lib\\fargate.ts:80:7)",
+              "new SpringbootfagateStack (C:\\Users\\cgxinyi\\Documents\\GitHub\\CodeTest-Seis\\springbootcdk\\lib\\fargate.ts:78:7)",
               "Object.<anonymous> (C:\\Users\\cgxinyi\\Documents\\GitHub\\CodeTest-Seis\\springbootcdk\\bin\\springbootcdk.ts:8:1)",
               "Module._compile (internal/modules/cjs/loader.js:1063:30)",
               "Module.m._compile (C:\\Users\\cgxinyi\\Documents\\GitHub\\CodeTest-Seis\\springbootcdk\\node_modules\\ts-node\\src\\index.ts:1056:23)",
