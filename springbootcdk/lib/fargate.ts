@@ -8,8 +8,6 @@ import * as codepipeline from '@aws-cdk/aws-codepipeline';
 import * as codepipeline_actions from '@aws-cdk/aws-codepipeline-actions';
 import { WorkshopPipelineStage } from './pipeline';
 import { LinuxParameters } from '@aws-cdk/aws-ecs';
-import { ManagedPolicy, Role, ServicePrincipal, PolicyStatement, Effect } from '@aws-cdk/aws-iam';
-
 
 export class SpringbootfagateStack extends cdk.Stack {
   constructor(scope: cdk.Construct, id: string, props?: cdk.StackProps) {
@@ -65,14 +63,16 @@ export class SpringbootfagateStack extends cdk.Stack {
           
           buildCommand: 'mvn install && npm install',
           synthCommand:'npx run cdk synth',
-          
+         
           environment: {
+            
             privileged: true,
             
           }
         }),
       });
-  
+    
+    //change check
       const deploy = new WorkshopPipelineStage(this, 'Deploy');
       pipeline.addApplicationStage(deploy);
       

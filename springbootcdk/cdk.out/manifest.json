@@ -1828,7 +1828,7 @@
             "type": "aws:cdk:logicalId",
             "data": "loadBalancerUrl",
             "trace": [
-              "new SpringbootfagateStack (C:\\Users\\cgxinyi\\Documents\\GitHub\\CodeTest-Seis\\springbootcdk\\lib\\fargate.ts:79:7)",
+              "new SpringbootfagateStack (C:\\Users\\cgxinyi\\Documents\\GitHub\\CodeTest-Seis\\springbootcdk\\lib\\fargate.ts:81:7)",
               "Object.<anonymous> (C:\\Users\\cgxinyi\\Documents\\GitHub\\CodeTest-Seis\\springbootcdk\\bin\\springbootcdk.ts:8:1)",
               "Module._compile (internal/modules/cjs/loader.js:1063:30)",
               "Module.m._compile (C:\\Users\\cgxinyi\\Documents\\GitHub\\CodeTest-Seis\\springbootcdk\\node_modules\\ts-node\\src\\index.ts:1056:23)",
