@@ -50,7 +50,6 @@ export class SpringbootfagateStack extends cdk.Stack {
           actionName: 'GitHub',
           output: sourceArtifact,
           oauthToken: cdk.SecretValue.plainText('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'),
-          trigger: codepipeline_actions.GitHubTrigger.NONE,
           // Replace these with your actual GitHub project info
           owner: 'cgxinyi',
           repo: 'CodeTest-Seis',
@@ -61,7 +60,7 @@ export class SpringbootfagateStack extends cdk.Stack {
           cloudAssemblyArtifact,
           subdirectory: 'springbootcdk',
           installCommand:'cd ../springbooteclipse && npm install -g aws-cdk typescript',
-          buildCommand: 'mvn install -Dmaven.test.skip=true && npm install',
+          buildCommand: 'mvn install && npm install',
           synthCommand:'npx run cdk synth',
           
            
