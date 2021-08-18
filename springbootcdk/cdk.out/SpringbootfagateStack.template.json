@@ -430,6 +430,71 @@
         "aws:cdk:path": "SpringbootfagateStack/MyCluster/Resource"
       }
     },
+    "FargateTaskExecutionServiceRole0484E2D1": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "ecs-tasks.amazonaws.com"
+              }
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":iam::aws:policy/AmazonECSTaskExecutionRolePolicy"
+              ]
+            ]
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "SpringbootfagateStack/FargateTaskExecutionServiceRole/Resource"
+      }
+    },
+    "FargateTaskExecutionServiceRoleDefaultPolicyDBE5CDC5": {
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "ecr:GetAuthorizationToken",
+                "ecr:BatchCheckLayerAvailability",
+                "ecr:GetDownloadUrlForLayer",
+                "ecr:BatchGetImage",
+                "logs:CreateLogStream",
+                "logs:PutLogEvents"
+              ],
+              "Effect": "Allow",
+              "Resource": "*"
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "PolicyName": "FargateTaskExecutionServiceRoleDefaultPolicyDBE5CDC5",
+        "Roles": [
+          {
+            "Ref": "FargateTaskExecutionServiceRole0484E2D1"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "SpringbootfagateStack/FargateTaskExecutionServiceRole/DefaultPolicy/Resource"
+      }
+    },
     "ServiceLBE9A1ADBC": {
       "Type": "AWS::ElasticLoadBalancingV2::LoadBalancer",
       "Properties": {
@@ -574,7 +639,7 @@
           {
             "Essential": true,
             "Image": {
-              "Fn::Sub": "739517360361.dkr.ecr.us-east-2.${AWS::URLSuffix}/cdk-hnb659fds-container-assets-739517360361-us-east-2:e8f0d5d640f170185b5d5d6a4219bb6e2f2bde8d38520938a76fe09c989dea67"
+              "Fn::Sub": "739517360361.dkr.ecr.us-east-2.${AWS::URLSuffix}/cdk-hnb659fds-container-assets-739517360361-us-east-2:ff2550bc9be79cc9e442034c887470f7152ffc420ea1519f998e6486e640b0a4"
             },
             "LogConfiguration": {
               "LogDriver": "awslogs",
@@ -1956,7 +2021,7 @@
     "CDKMetadata": {
       "Type": "AWS::CDK::Metadata",
       "Properties": {
-        "Analytics": "v2:deflate64:H4sIAAAAAAAACn1T227bMAz9lr4r6twNwx7npF0RrNgMp+ueZZl1FcuSoEuKwPC/j5Lt2OuGPvGQOrxTGc2yL/TD1Vf26ja8bq97ri3Q/uAZb0kJTgfLgeye1c/gTfAkdw48vjZCNWSnlfM2cB8JM3kgMVYP/Ib2T4bHp6diR4pQScEPoVKQ6AsqdfDwyCoJi32xYULNBfNCqws5grt9EcUP5u+Zh1d2JoUVJ4RL4L3yYBHPhLGSScs9tvjSgfLkADxY4c/3VgeTanjXcNdYcO4f814l+0CAO9rvZHCYPbJm+I3ZhsWuXHsLz0KJuae3Fq08Ewrsyjb5HsCexLiPCaZ0G8N8bNXR3BiccprWg2b1lkmmONRv3EEy5wWXyKgSA5d5wnX93zs18Ze+5gnsTU2cGa/eHzEzbmAe5EodiGAd7Us97j3JQqNfWtSIYnd2w+LNOXqreQt237EG0hXGN1qC0U54bc9b5oBI3eDwH3RzyTjjgXBdgxEGJM6W9sWEUrIV/g3Vi9btQNoOI32HVE0UuRQsbT2BgbiPtN8GLCnd2oRGsbSx1scKqiBkvaQvrD7C+IEmOAxkrjLeUd1eqvtlalzirOZ8vJa6jd8R0E1heHp016fsE80+0+zq6ITY2KC86ICWo/wDo3aaCfIDAAA="
+        "Analytics": "v2:deflate64:H4sIAAAAAAAACn1T227bMAz9lr4r6twNwx7npF0RrNgMp+ueZZl1FcuSoEuKwPC/j5Lt2OuGPvGQPOJdGc2yL/TD1Vf26ja8bq97ri3Q/uAZb0kJTgfLgeye1c/gTfAkdw48ehuhGrLTynkbuI+EmTyQGKsHfkP7J8Oj66nYkSJUUvBDqBQk+oJKHTw8skrCYl9smFBzwbzQ6kKO4G5fRPGD+Xvm4ZWdSWHFCeESeK88WMQzYaxk0nKPLb50oDw5AA9W+PO91cGkGt413DUWnPvHvFfJPhDgjvY7GRxmj6wZfmO2YbEr197Cs1Bi7umtRSvPhAK7sk1vD2BPYtzHBAciWEf7Uo/TS7LQOOnU7ohSSRvDfByHo7kxaE0TfdCs3jLJFIf6TQqQzHnBJTKqxMCFn3Cl/3+dGv1LX/ME9q8mzoxX/kfMjFuah71SY+V2w+LNOXqreQt237EG0hVGHy3BaCe8tuctc0CkbnD4D7q5RJvxQLiuwQgDEmdL+2JCaUwr/BuqF63bgbQdRvoOaY5R5FKwtPUEBuI+0n4bsKR0axMaxbKAtT5WUAUh6yV9YfURxg80wWEgc5Xxjur2Ut0vU+OCZjXn47XUbfyOgM8UhqdHd33KPtHsM82ujk6IjQ3Kiw5oOco/NYbp/fIDAAA="
       },
       "Metadata": {
         "aws:cdk:path": "SpringbootfagateStack/CDKMetadata/Default"
