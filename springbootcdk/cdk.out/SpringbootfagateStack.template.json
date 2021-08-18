@@ -574,7 +574,7 @@
           {
             "Essential": true,
             "Image": {
-              "Fn::Sub": "739517360361.dkr.ecr.us-east-2.${AWS::URLSuffix}/cdk-hnb659fds-container-assets-739517360361-us-east-2:f12c39f425a398b093ad22fa81fdb9b0f959fb86ca33c578df53dbb0c18c8d91"
+              "Fn::Sub": "739517360361.dkr.ecr.us-east-2.${AWS::URLSuffix}/cdk-hnb659fds-container-assets-739517360361-us-east-2:657b7c2beb4caf0b5e72419361e10413e996b94670d7f4e6f45b320d39aed68c"
             },
             "LogConfiguration": {
               "LogDriver": "awslogs",

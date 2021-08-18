@@ -44,9 +44,8 @@ export class SpringbootfagateStack extends cdk.Stack {
       const pipeline = new CdkPipeline(this, 'SeisPipeline', {
         pipelineName: 'SeisPipeline',
         cloudAssemblyArtifact,
-        selfMutating:true,
+        selfMutating:true,        
         sourceAction: new codepipeline_actions.GitHubSourceAction({
-          
           actionName: 'GitHub',
           output: sourceArtifact,
           oauthToken: cdk.SecretValue.secretsManager('github-oauth'),
