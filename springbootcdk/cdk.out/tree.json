@@ -900,7 +900,7 @@
                           {
                             "essential": true,
                             "image": {
-                              "Fn::Sub": "739517360361.dkr.ecr.us-east-2.${AWS::URLSuffix}/cdk-hnb659fds-container-assets-739517360361-us-east-2:569c52e1b61a627ae446e914b7c8069637188bd77d0f19a533d3cd0174ec1167"
+                              "Fn::Sub": "739517360361.dkr.ecr.us-east-2.${AWS::URLSuffix}/cdk-hnb659fds-container-assets-739517360361-us-east-2:f12c39f425a398b093ad22fa81fdb9b0f959fb86ca33c578df53dbb0c18c8d91"
                             },
                             "name": "web",
                             "portMappings": [
@@ -1708,7 +1708,7 @@
                                   "Owner": "cgxinyi",
                                   "Repo": "CodeTest-Seis",
                                   "Branch": "main",
-                                  "OAuthToken": "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",
+                                  "OAuthToken": "{{resolve:secretsmanager:github-oauth:SecretString:::}}",
                                   "PollForSourceChanges": false
                                 },
                                 "runOrder": 1
@@ -1740,7 +1740,7 @@
                                   "ProjectName": {
                                     "Ref": "SeisPipelineBuildSynthCdkBuildProject9749751E"
                                   },
-                                  "EnvironmentVariables": "[{\"name\":\"_PROJECT_CONFIG_HASH\",\"type\":\"PLAINTEXT\",\"value\":\"1681ee6fc42ac2651d42ee2849ebca56e9ae4d4d272c5d57e995d3281fa3d2ff\"}]"
+                                  "EnvironmentVariables": "[{\"name\":\"_PROJECT_CONFIG_HASH\",\"type\":\"PLAINTEXT\",\"value\":\"b0dac8357308bb70ab131cc795e1e73393937d1a39b3d7ef7388a51ca82330f4\"}]"
                                 },
                                 "runOrder": 1,
                                 "roleArn": {
@@ -1926,6 +1926,37 @@
                       "GitHub": {
                         "id": "GitHub",
                         "path": "SpringbootfagateStack/SeisPipeline/Pipeline/Source/GitHub",
+                        "children": {
+                          "WebhookResource": {
+                            "id": "WebhookResource",
+                            "path": "SpringbootfagateStack/SeisPipeline/Pipeline/Source/GitHub/WebhookResource",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::CodePipeline::Webhook",
+                              "aws:cdk:cloudformation:props": {
+                                "authentication": "GITHUB_HMAC",
+                                "authenticationConfiguration": {
+                                  "secretToken": "{{resolve:secretsmanager:github-oauth:SecretString:::}}"
+                                },
+                                "filters": [
+                                  {
+                                    "jsonPath": "$.ref",
+                                    "matchEquals": "refs/heads/{Branch}"
+                                  }
+                                ],
+                                "targetAction": "GitHub",
+                                "targetPipeline": {
+                                  "Ref": "SeisPipeline0FE706AE"
+                                },
+                                "targetPipelineVersion": 1,
+                                "registerWithThirdParty": true
+                              }
+                            },
+                            "constructInfo": {
+                              "fqn": "@aws-cdk/aws-codepipeline.CfnWebhook",
+                              "version": "1.118.0"
+                            }
+                          }
+                        },
                         "constructInfo": {
                           "fqn": "@aws-cdk/core.Construct",
                           "version": "1.118.0"
@@ -2274,7 +2305,7 @@
                                     },
                                     "source": {
                                       "type": "CODEPIPELINE",
-                                      "buildSpec": "{\n  \"version\": \"0.2\",\n  \"phases\": {\n    \"pre_build\": {\n      \"commands\": [\n        \"cd springbootcdk\",\n        \"cd ../springbooteclipse && npm install -g aws-cdk typescript\"\n      ]\n    },\n    \"build\": {\n      \"commands\": [\n        \"mvn install -Dmaven.test.skip=true && npm install\",\n        \"npx run cdk synth\"\n      ]\n    }\n  },\n  \"artifacts\": {\n    \"base-directory\": \"springbootcdk/cdk.out\",\n    \"files\": \"**/*\"\n  }\n}"
+                                      "buildSpec": "{\n  \"version\": \"0.2\",\n  \"phases\": {\n    \"pre_build\": {\n      \"commands\": [\n        \"cd springbootcdk\",\n        \"cd ../springbooteclipse && npm install -g aws-cdk typescript\"\n      ]\n    },\n    \"build\": {\n      \"commands\": [\n        \"mvn install && npm install\",\n        \"npx run cdk synth\"\n      ]\n    }\n  },\n  \"artifacts\": {\n    \"base-directory\": \"springbootcdk/cdk.out\",\n    \"files\": \"**/*\"\n  }\n}"
                                     },
                                     "encryptionKey": {
                                       "Fn::GetAtt": [

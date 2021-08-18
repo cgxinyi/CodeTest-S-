@@ -8,6 +8,8 @@ import * as codepipeline from '@aws-cdk/aws-codepipeline';
 import * as codepipeline_actions from '@aws-cdk/aws-codepipeline-actions';
 import { WorkshopPipelineStage } from './pipeline';
 import { LinuxParameters } from '@aws-cdk/aws-ecs';
+import { ManagedPolicy, Role, ServicePrincipal, PolicyStatement, Effect } from '@aws-cdk/aws-iam';
+
 
 export class SpringbootfagateStack extends cdk.Stack {
   constructor(scope: cdk.Construct, id: string, props?: cdk.StackProps) {
@@ -40,7 +42,7 @@ export class SpringbootfagateStack extends cdk.Stack {
 
       const sourceArtifact = new codepipeline.Artifact();
       const cloudAssemblyArtifact = new codepipeline.Artifact();
-
+      
       const pipeline = new CdkPipeline(this, 'SeisPipeline', {
         pipelineName: 'SeisPipeline',
         cloudAssemblyArtifact,
@@ -49,7 +51,7 @@ export class SpringbootfagateStack extends cdk.Stack {
           
           actionName: 'GitHub',
           output: sourceArtifact,
-          oauthToken: cdk.SecretValue.secretsManager('github-token'),
+          oauthToken: cdk.SecretValue.secretsManager('github-oauth'),
           // Replace these with your actual GitHub project info
           owner: 'cgxinyi',
           repo: 'CodeTest-Seis',
@@ -60,13 +62,13 @@ export class SpringbootfagateStack extends cdk.Stack {
           cloudAssemblyArtifact,
           subdirectory: 'springbootcdk',
           installCommand:'cd ../springbooteclipse && npm install -g aws-cdk typescript',
+          
           buildCommand: 'mvn install && npm install',
           synthCommand:'npx run cdk synth',
           
-           
-          
           environment: {
             privileged: true,
+            
           }
         }),
       });

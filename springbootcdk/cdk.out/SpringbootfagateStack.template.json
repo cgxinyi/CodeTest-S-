@@ -574,7 +574,7 @@
           {
             "Essential": true,
             "Image": {
-              "Fn::Sub": "739517360361.dkr.ecr.us-east-2.${AWS::URLSuffix}/cdk-hnb659fds-container-assets-739517360361-us-east-2:569c52e1b61a627ae446e914b7c8069637188bd77d0f19a533d3cd0174ec1167"
+              "Fn::Sub": "739517360361.dkr.ecr.us-east-2.${AWS::URLSuffix}/cdk-hnb659fds-container-assets-739517360361-us-east-2:f12c39f425a398b093ad22fa81fdb9b0f959fb86ca33c578df53dbb0c18c8d91"
             },
             "LogConfiguration": {
               "LogDriver": "awslogs",
@@ -1147,7 +1147,7 @@
                   "Owner": "cgxinyi",
                   "Repo": "CodeTest-Seis",
                   "Branch": "main",
-                  "OAuthToken": "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",
+                  "OAuthToken": "{{resolve:secretsmanager:github-oauth:SecretString:::}}",
                   "PollForSourceChanges": false
                 },
                 "Name": "GitHub",
@@ -1174,7 +1174,7 @@
                   "ProjectName": {
                     "Ref": "SeisPipelineBuildSynthCdkBuildProject9749751E"
                   },
-                  "EnvironmentVariables": "[{\"name\":\"_PROJECT_CONFIG_HASH\",\"type\":\"PLAINTEXT\",\"value\":\"1681ee6fc42ac2651d42ee2849ebca56e9ae4d4d272c5d57e995d3281fa3d2ff\"}]"
+                  "EnvironmentVariables": "[{\"name\":\"_PROJECT_CONFIG_HASH\",\"type\":\"PLAINTEXT\",\"value\":\"b0dac8357308bb70ab131cc795e1e73393937d1a39b3d7ef7388a51ca82330f4\"}]"
                 },
                 "InputArtifacts": [
                   {
@@ -1365,6 +1365,30 @@
       ],
       "Metadata": {
         "aws:cdk:path": "SpringbootfagateStack/SeisPipeline/Pipeline/Resource"
+      }
+    },
+    "SeisPipelineSourceGitHubWebhookResource5A397556": {
+      "Type": "AWS::CodePipeline::Webhook",
+      "Properties": {
+        "Authentication": "GITHUB_HMAC",
+        "AuthenticationConfiguration": {
+          "SecretToken": "{{resolve:secretsmanager:github-oauth:SecretString:::}}"
+        },
+        "Filters": [
+          {
+            "JsonPath": "$.ref",
+            "MatchEquals": "refs/heads/{Branch}"
+          }
+        ],
+        "TargetAction": "GitHub",
+        "TargetPipeline": {
+          "Ref": "SeisPipeline0FE706AE"
+        },
+        "TargetPipelineVersion": 1,
+        "RegisterWithThirdParty": true
+      },
+      "Metadata": {
+        "aws:cdk:path": "SpringbootfagateStack/SeisPipeline/Pipeline/Source/GitHub/WebhookResource"
       }
     },
     "SeisPipelineBuildSynthCodePipelineActionRole15A71DD3": {
@@ -1628,7 +1652,7 @@
           ]
         },
         "Source": {
-          "BuildSpec": "{\n  \"version\": \"0.2\",\n  \"phases\": {\n    \"pre_build\": {\n      \"commands\": [\n        \"cd springbootcdk\",\n        \"cd ../springbooteclipse && npm install -g aws-cdk typescript\"\n      ]\n    },\n    \"build\": {\n      \"commands\": [\n        \"mvn install -Dmaven.test.skip=true && npm install\",\n        \"npx run cdk synth\"\n      ]\n    }\n  },\n  \"artifacts\": {\n    \"base-directory\": \"springbootcdk/cdk.out\",\n    \"files\": \"**/*\"\n  }\n}",
+          "BuildSpec": "{\n  \"version\": \"0.2\",\n  \"phases\": {\n    \"pre_build\": {\n      \"commands\": [\n        \"cd springbootcdk\",\n        \"cd ../springbooteclipse && npm install -g aws-cdk typescript\"\n      ]\n    },\n    \"build\": {\n      \"commands\": [\n        \"mvn install && npm install\",\n        \"npx run cdk synth\"\n      ]\n    }\n  },\n  \"artifacts\": {\n    \"base-directory\": \"springbootcdk/cdk.out\",\n    \"files\": \"**/*\"\n  }\n}",
           "Type": "CODEPIPELINE"
         },
         "EncryptionKey": {
@@ -1932,7 +1956,7 @@
     "CDKMetadata": {
       "Type": "AWS::CDK::Metadata",
       "Properties": {
-        "Analytics": "v2:deflate64:H4sIAAAAAAAACn1T227bMAz9lr4r6rwNwx6XpF0RrNgMp+u7LLMeY1sSdEkRGP73UbIde92wJx6Sh+JVGc+yz/zdzRfx6jayam57qS3w/uiFbFgBTgcrge1f1I/gTfBs6xx48taoarbXynkbpI+EmTyw+FYP8j3vn42Mrud8z/JQtiiPoVSQ6AsqdPDwJMoWFvtio4RaovCo1ZUcwf0hj+K78A/Cw6u4sNzimeDy8EF5sIRnwljJpG09tfirA+XZEWSw6C8PVgeTaviv4b624Nxf5oNK9oGBdLzft8FR9sia4VdhaxG7cs0dvKDCuae3Fq28QAV2ZZtij2DPOO5jgindxggfW3V8awxNOU3rUYtqJ1qhJFRvwqEVzqNsiVEmBi3zTOv6d3Rq4g99zUPqTU2cGa/8T5SZNjAPcqUODEXH+0KPe08y1xSXFjWi2J3diHhzjt9p2YA9dKKGdIXRxwsw2qHX9rITDliraxr+o66vGWc8MKkrMGigpdnyPp9QSjbhgTUdhX+DVEIU2xZFWnUCA3MfeL8LVEc6sAmNYql9rY9py4BtteTMrT7B+GsmOAxsLi0eT9Vcy/tpKtrcrG7leCJVE/8gUJii5/nJ3Z6zjzz7xLObk0Pc2KA8dsCLUf4GyupWTecDAAA="
+        "Analytics": "v2:deflate64:H4sIAAAAAAAACn1T227bMAz9lr4r6twNwx7npF0RrNgMp+ueZZl1FcuSoEuKwPC/j5Lt2OuGPvGQOrxTGc2yL/TD1Vf26ja8bq97ri3Q/uAZb0kJTgfLgeye1c/gTfAkdw48vjZCNWSnlfM2cB8JM3kgMVYP/Ib2T4bHp6diR4pQScEPoVKQ6AsqdfDwyCoJi32xYULNBfNCqws5grt9EcUP5u+Zh1d2JoUVJ4RL4L3yYBHPhLGSScs9tvjSgfLkADxY4c/3VgeTanjXcNdYcO4f814l+0CAO9rvZHCYPbJm+I3ZhsWuXHsLz0KJuae3Fq08Ewrsyjb5HsCexLiPCaZ0G8N8bNXR3BiccprWg2b1lkmmONRv3EEy5wWXyKgSA5d5wnX93zs18Ze+5gnsTU2cGa/eHzEzbmAe5EodiGAd7Us97j3JQqNfWtSIYnd2w+LNOXqreQt237EG0hXGN1qC0U54bc9b5oBI3eDwH3RzyTjjgXBdgxEGJM6W9sWEUrIV/g3Vi9btQNoOI32HVE0UuRQsbT2BgbiPtN8GLCnd2oRGsbSx1scKqiBkvaQvrD7C+IEmOAxkrjLeUd1eqvtlalzirOZ8vJa6jd8R0E1heHp016fsE80+0+zq6ITY2KC86ICWo/wDo3aaCfIDAAA="
       },
       "Metadata": {
         "aws:cdk:path": "SpringbootfagateStack/CDKMetadata/Default"
