@@ -1,5 +1,4 @@
 com\example\demo\DemoApplication.class
-com\example\demo\model\Validation.class
 com\example\demo\service\PayslipServiceImpl.class
 com\example\demo\service\ListOfTaxthresholdService.class
 com\example\demo\restcontroller\EmployeeController.class

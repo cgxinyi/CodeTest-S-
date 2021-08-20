@@ -23,7 +23,6 @@ import com.example.demo.DemoApplication;
 import com.example.demo.model.Employee;
 import com.example.demo.model.ListOfTaxthreshold;
 import com.example.demo.model.Payslip;
-import com.example.demo.model.Validation;
 import com.example.demo.restcontroller.EmployeeController;
 import com.example.demo.service.ListOfTaxthresholdService;
 import com.example.demo.service.ListOfTaxthresholdServiceImpl;
@@ -47,8 +46,7 @@ public class EmployeeControllerUnitTest {
 	@MockBean
 	private Employee employee;
 	
-	@MockBean
-	private Validation validation;
+	
 	
 	@Test
 	public void testResponse() throws Exception {		

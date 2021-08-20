@@ -16,7 +16,6 @@ import com.example.demo.service.PayslipService;
 @DirtiesContext(classMode = ClassMode.AFTER_EACH_TEST_METHOD)
 public class PayslipServiceUnit {
 	
-	@InjectMocks
 	private PayslipService payslipService;
 	
 	@BeforeEach
