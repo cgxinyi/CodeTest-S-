@@ -21,13 +21,10 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import com.example.demo.DemoApplication;
 import com.example.demo.model.Employee;
-import com.example.demo.model.ListOfTaxthreshold;
 import com.example.demo.model.Payslip;
 import com.example.demo.restcontroller.EmployeeController;
-import com.example.demo.service.ListOfTaxthresholdService;
-import com.example.demo.service.ListOfTaxthresholdServiceImpl;
-import com.example.demo.service.PayslipService;
-import com.example.demo.service.PayslipServiceImpl;
+import com.example.demo.service.EmployeeService;
+import com.example.demo.service.EmployeeServiceImpl;
 
 @SpringBootTest(classes = DemoApplication.class)
 @AutoConfigureMockMvc
@@ -36,9 +33,6 @@ public class EmployeeControllerUnitTest {
 	private MockMvc mockMvc = MockMvcBuilders.standaloneSetup(new EmployeeController()).build();;
 	private String postEndPoint = "/postpayslip";
 	private String str = "[{\"firstName\":\"David\",\"lastName\":\"Rudd\",\"annualSalary\":\"60050\",\"paymentMonth\":\"1\",\"superRate\":\"3\"},{\"firstName\":\"Ryan\",\"lastName\":\"Chen\",\"annualSalary\":\"120000\",\"paymentMonth\":\"1\",\"superRate\":\"5\"}]";
-	
-	@MockBean
-	private ListOfTaxthreshold listOfTaxthreshold;
 	
 	@MockBean
 	private Payslip payslip;

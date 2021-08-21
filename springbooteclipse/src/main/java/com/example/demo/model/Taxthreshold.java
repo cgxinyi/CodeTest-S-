@@ -1,47 +1,51 @@
 package com.example.demo.model;
 
+import java.math.BigDecimal;
+
 public class Taxthreshold {
-	private int taxMaxOfEachStages;
-	private double taxCentForOverDollar;
-	private int taxLumpBeforeCurrentStage;
+	private BigDecimal taxMinOfEachStages;
+	private BigDecimal taxCentForOverDollar;
+	private BigDecimal taxLumpBeforeCurrentStage;
 	
-	public Taxthreshold(int taxMax , double taxCent, int taxLump) 
+	
+	public Taxthreshold(BigDecimal taxMin , BigDecimal taxCent, BigDecimal taxLump) 
 	{
-		taxMaxOfEachStages = taxMax;
+		taxMinOfEachStages = taxMin;
 		taxCentForOverDollar = taxCent;
 		taxLumpBeforeCurrentStage = taxLump;
 	}
 	
-	public void setTaxMax(int taxMax)
+	public void setTaxMin(BigDecimal taxMin)
 	{
-		taxMaxOfEachStages=taxMax;
+		this.taxMinOfEachStages=taxMin;
 	}
 	
 	
-	public void setTaxCent(double taxCent)
+	public void setTaxCent(BigDecimal taxCent)
 	{
-		taxCentForOverDollar = taxCent;
+		this.taxCentForOverDollar = taxCent;
 	}
 	
-	public void setTaxLump(int taxLump)
+	public void setTaxLump(BigDecimal taxLump)
 	{
-		taxLumpBeforeCurrentStage = taxLump;
+		this.taxLumpBeforeCurrentStage = taxLump;
 	}
 	
-	public int getTaxMax()
+	public BigDecimal getTaxMin()
 	{
-		return taxMaxOfEachStages;
+		return taxMinOfEachStages;
 	}
 	
 	
-	public double getTaxCent()
+	public BigDecimal getTaxCent()
 	{
 		return taxCentForOverDollar;
 	}
 	
-	public int getTaxLump()
+	public BigDecimal getTaxLump()
 	{
 		return taxLumpBeforeCurrentStage;
 	}
 	
+
 }

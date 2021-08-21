@@ -1,14 +1,22 @@
 package com.example.demo.model;
 
+import java.util.UUID;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Employee {
-	  String firstName;
-	  String lastName;
-	  int annualSalary;
-	  int superRate;
-	  int paymentMonth;
+	 private String firstName;
+	 private String lastName;
+	 private int annualSalary;
+	 private int superRate;
+	 private int paymentMonth;
 
 	    
-	  public Employee(String first, String last, int annual,int superrate,int month)
+	  public Employee(@JsonProperty("firstName") String first,
+			  			@JsonProperty("lastName") String last,
+			  			@JsonProperty("annualSalary") int annual,
+			  			@JsonProperty("superRate") int superrate,
+			  			@JsonProperty("paymentMonth") int month)
 	  {
 	      firstName = first;
 	      lastName = last;

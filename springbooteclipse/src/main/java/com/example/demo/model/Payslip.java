@@ -1,19 +1,29 @@
 package com.example.demo.model;
 
+import java.math.BigDecimal;
+import java.util.UUID;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Payslip {
     String fromDate;
     String toDate;
-    int incomeTax;
-    int netIncome;
-    int superAmount;
-    int grossIncome;
+    BigDecimal incomeTax;
+    BigDecimal netIncome;
+    BigDecimal superAmount;
+    BigDecimal grossIncome;
     
     public Payslip()
     {
     	
     }
     
-    public Payslip(String fromD,String toD, int income,int net,int superA, int gross)
+    public Payslip(@JsonProperty("fromDate") String fromD,
+    				@JsonProperty("toDate") String toD, 
+    				@JsonProperty("incomeTax") BigDecimal income,
+    				@JsonProperty("netIncome") BigDecimal net,
+    				@JsonProperty("superAmount") BigDecimal superA,
+    				@JsonProperty("grossIncome") BigDecimal gross)
     {
     	fromDate = fromD;
     	toDate = toD;
@@ -22,38 +32,37 @@ public class Payslip {
     	superAmount = superA;
     	grossIncome = gross;
     }
-
-    public void setGrossIncome(int annualSalary) {
-        double temp = (double) annualSalary/12;
-        grossIncome = (int) Math.round(temp);
+    
+   
+    public void setGrossIncome(BigDecimal annualSalary) {
+    	BigDecimal divNum = BigDecimal.valueOf(12);
+        grossIncome = annualSalary.divide(divNum);
     }
 
-    public void setIncomeTax(int incomeT) {
+    public void setIncomeTax(BigDecimal incomeT) {
     	
     	incomeTax=incomeT;
     	
     }
 
-    public void setNetIncome(int grossIncome, int incomeTax) {
-        netIncome = grossIncome-incomeTax;
+    public void setNetIncome(BigDecimal grossIncome, BigDecimal incomeTax) {
+        netIncome = grossIncome.subtract(incomeTax);
       
     }
 
-    public void setSuperAmount(double superRate, int grossIncome) {
-        superRate = superRate / 100;
-        double tempAmount = (double) superRate * grossIncome;
-        superAmount = (int) Math.round(tempAmount);
-  
+    public void setSuperAmount(BigDecimal superRate, BigDecimal grossIncome) {
+        superRate = superRate.divide(BigDecimal.valueOf(100));
+        superAmount = superRate.multiply(grossIncome);
     }
 
     public void setFromDate(String date)
     {
-    	fromDate = date;
+    	this.fromDate = date;
     }
     
     public void setToDate(String date)
     {
-    	toDate = date;
+    	this.toDate = date;
     }
 
     
@@ -66,28 +75,27 @@ public class Payslip {
     {
     	return toDate;
     }
-    public int getGrossIncome() {
+    public BigDecimal getGrossIncome() {
         return grossIncome;
     }
 
-    public int getIncomeTax() {
+    public BigDecimal getIncomeTax() {
         return incomeTax;
     }
 
-    public int getNetIncome() {
+    public BigDecimal getNetIncome() {
         return netIncome;
     }
 
-   
 
-    public int getSuperAmount() {
+
+    public BigDecimal getSuperAmount() {
         return superAmount;
     }
 
 
     public void displayPayslip()
     {
-       
         System.out.println("From Date: " + fromDate);
         System.out.println("To Date: " + toDate);
         System.out.println("Gross Income: " + grossIncome);
