@@ -47,6 +47,8 @@ jobs:
         privileged: true
         IMAGE_TAG: latest
       run: |
+        # Build aws container
+        aws ecr describe-repositories --repository-names ${REPO_NAME} || aws ecr create-repository --repository-name ${REPO_NAME}
         # Build a docker container and push it to ECR 
         cd springbooteclipse
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
