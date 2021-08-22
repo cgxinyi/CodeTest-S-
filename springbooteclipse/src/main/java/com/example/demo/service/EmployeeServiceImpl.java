@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.model.Employee;
 import com.example.demo.model.Taxthreshold;
+import com.example.demo.repository.EmployeeDataAccessServiceRepository;
 import com.example.demo.repository.EmployeeServiceDAO;
 
 @Service
@@ -48,7 +50,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 		return incomeTax;
 	}
 	
-	public HashMap<Object, Object> insertEmployee(List<Employee> employee)
+	public Map<Object, Object> insertEmployee(List<Employee> employee)
 	{
 		return empDao.insertEmployee(employee);
 	}

@@ -36,7 +36,7 @@ public class EmployeeController {
 
 	
 	@PostMapping(value="/postpayslip", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public HashMap<Object, Object> response(@RequestBody List<Employee> employee){
+    public Map<Object, Object> response(@RequestBody List<Employee> employee){
 		return empService.insertEmployee(employee);
 	}
 	
