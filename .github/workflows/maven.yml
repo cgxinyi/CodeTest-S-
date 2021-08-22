@@ -57,9 +57,12 @@ jobs:
         echo creating imagedefinitions.json dynamically
         printf '[{"name”:"__ECS_CONTAINER_NAME__","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
         echo Build completed on `date`
-    
-
- 
+       
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: imagedefinitions.json
+     
   
   
       
