@@ -13,13 +13,12 @@ import org.springframework.stereotype.Service;
 import com.example.demo.model.Employee;
 import com.example.demo.model.Taxthreshold;
 import com.example.demo.repository.EmployeeDataAccessServiceRepository;
-import com.example.demo.repository.EmployeeServiceDAO;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
 	
 	private ArrayList<Taxthreshold> taxthresholds;
-	private EmployeeServiceDAO empDao;
+	private EmployeeDataAccessServiceRepository empDao = new EmployeeDataAccessServiceRepository() ;
 
 	
 	@Override
@@ -50,8 +49,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 		return incomeTax;
 	}
 	
-	public Map<Object, Object> insertEmployee(List<Employee> employee)
+	public ArrayList<Employee> insertEmployee(ArrayList<Employee> employee)
 	{
+		System.out.println("emploservice"+employee);
 		return empDao.insertEmployee(employee);
 	}
 	

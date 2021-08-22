@@ -1,6 +1,7 @@
 package com.example.demo.model;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.UUID;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -35,8 +36,10 @@ public class Payslip {
     
    
     public void setGrossIncome(BigDecimal annualSalary) {
-    	BigDecimal divNum = BigDecimal.valueOf(12);
-        grossIncome = annualSalary.divide(divNum);
+
+    	BigDecimal divNum = new BigDecimal("12");
+        grossIncome = annualSalary.divide(divNum, 2, RoundingMode.HALF_UP);
+     
     }
 
     public void setIncomeTax(BigDecimal incomeT) {

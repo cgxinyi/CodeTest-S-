@@ -12,5 +12,5 @@ import com.example.demo.model.Taxthreshold;
 public interface EmployeeService {
 	ArrayList<Taxthreshold> loadTaxthreshold();
 	BigDecimal calculateIncomeTax(BigDecimal grossIncome);
-	Map<Object, Object> insertEmployee(List<Employee> employee);
+	ArrayList<Employee> insertEmployee(ArrayList<Employee> employee);
 }

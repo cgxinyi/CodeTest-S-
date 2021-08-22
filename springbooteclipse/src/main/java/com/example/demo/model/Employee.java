@@ -1,28 +1,34 @@
 package com.example.demo.model;
 
+import java.math.BigDecimal;
 import java.util.UUID;
+
+import org.springframework.lang.Nullable;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Employee {
 	 private String firstName;
 	 private String lastName;
-	 private int annualSalary;
+	 private BigDecimal annualSalary;
 	 private int superRate;
 	 private int paymentMonth;
-
+	 private Payslip payslip;
 	    
 	  public Employee(@JsonProperty("firstName") String first,
 			  			@JsonProperty("lastName") String last,
-			  			@JsonProperty("annualSalary") int annual,
+			  			@JsonProperty("annualSalary") BigDecimal annual,
 			  			@JsonProperty("superRate") int superrate,
-			  			@JsonProperty("paymentMonth") int month)
+			  			@JsonProperty("paymentMonth") int month,
+			  			 Payslip paysl)
+	  
 	  {
 	      firstName = first;
 	      lastName = last;
 	      annualSalary = annual;
 	      superRate = superrate;
 	      paymentMonth = month;
+	      payslip = paysl;
 	  }
 
 	     public String getFirstName() {
@@ -33,7 +39,7 @@ public class Employee {
 	        return lastName;
 	     }
 
-	     public int getAnnualSalary() {
+	     public BigDecimal getAnnualSalary() {
 	        return annualSalary;
 	     }
 
@@ -44,6 +50,11 @@ public class Employee {
 	     public int getPaymentMonth() {
 	         return paymentMonth;
 	     }
+	     
+	     public Payslip getPayslip()
+	     {
+	    	 return payslip;
+	     }
 
 	     public void setFirstName(String firstName) {
 	        this.firstName = firstName;
@@ -53,7 +64,7 @@ public class Employee {
 	         this.lastName = lastName;
 	     }
 
-	     public void setAnnualSalary(int annualSalary) {
+	     public void setAnnualSalary(BigDecimal annualSalary) {
 	         this.annualSalary = annualSalary;
 	     }
 
@@ -61,6 +72,11 @@ public class Employee {
 	     
 	         this.superRate = superRate;
 	         
+	     }
+	     
+	     public void setPayslip(Payslip payslip)
+	     {
+	    	 this.payslip = payslip;
 	     }
 
 	     public void setPaymentStartDate(int paymentMonth) {

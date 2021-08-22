@@ -4,6 +4,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,7 +50,7 @@ public class EmployeeControllerUnitTest {
 
 	@MockBean
 	private EmployeeDataAccessServiceRepository empData;
-	private Employee employee = new Employee("David","Rudd",60050,1,3);
+	private Employee employee = new Employee("David","Rudd",BigDecimal.valueOf(60050),1,3,null);
 	
 	
 	
