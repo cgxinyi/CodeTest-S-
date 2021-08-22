@@ -1,5 +1,4 @@
 com\example\demo\DemoApplication.class
-com\example\demo\restcontroller\EmployeeController.class
 com\example\demo\model\Payslip.class
 com\example\demo\repository\EmployeeServiceDAO.class
 com\example\demo\model\Employee.class
