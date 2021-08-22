@@ -11,7 +11,6 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
@@ -21,6 +20,7 @@ jobs:
       with:
         java-version: '11'
         distribution: 'adopt'
+        
     - name: Build with Maven
       working-directory: ./springbooteclipse
       run: mvn -B package --file pom.xml
