@@ -22,7 +22,6 @@ jobs:
         distribution: 'adopt'
         
     - name: Build with Maven
-      working-directory: ./springbooteclipse
       run: mvn -B package --file pom.xml
 
     - name: Checkout
