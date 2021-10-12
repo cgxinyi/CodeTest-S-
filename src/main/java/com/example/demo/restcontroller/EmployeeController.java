@@ -40,7 +40,7 @@ public class EmployeeController {
 	
 	@PostMapping(value="/postpayslip", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public  ArrayList<Employee>  response(@RequestBody ArrayList<Employee> employee){
-		System.out.println("outer"+employee);
+	
 		return this.empService.insertEmployee(employee);
 
 	}
