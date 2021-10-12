@@ -2,12 +2,12 @@
 # For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-maven
  
 name: Java CI with Maven 
-
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+ 
+on: 
+  push: 
+    branches: [ main ] 
+  pull_request: 
+    branches: [ main ]  
 
 jobs:
   build:
@@ -22,7 +22,6 @@ jobs:
         distribution: 'adopt'
         
     - name: Build with Maven
-      working-directory: ./springbooteclipse
       run: mvn -B package --file pom.xml
 
     - name: Checkout
@@ -45,16 +44,16 @@ jobs:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         ECR_REPOSITORY: ${{ secrets.REPO_NAME }}
         IMAGE_TAG: latest
-        
+         
       run: |
         # Build a docker container and push it to ECR 
-        cd springbooteclipse
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
         echo "Pushing image to ECR..."
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
+        
 
-     
+
   
   
       
