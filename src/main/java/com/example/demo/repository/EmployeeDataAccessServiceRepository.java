@@ -42,7 +42,7 @@ public class EmployeeDataAccessServiceRepository {
 	        String fromDate="01 "+ currentMonth;
 	        String toDate = lastD + " " + currentMonth;
 	        payslip = new Payslip(fromDate,toDate,payslip.getIncomeTax(),payslip.getNetIncome(),payslip.getSuperAmount(),payslip.getGrossIncome()); 	        
-	        System.out.println("sadfahsdf"+payslip);
+	    
 	        empPayslip.add(payslip);
 	        empDatabase.add(new Employee(employee.get(i).getFirstName(),employee.get(i).getLastName(),employee.get(i).getAnnualSalary(),employee.get(i).getSuperRate(),employee.get(i).getPaymentMonth(),empPayslip.get(i)));
 		}

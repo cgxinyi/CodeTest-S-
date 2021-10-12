@@ -51,7 +51,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 	
 	public ArrayList<Employee> insertEmployee(ArrayList<Employee> employee)
 	{
-		System.out.println("emploservice"+employee);
+	
 		return empDao.insertEmployee(employee);
 	}
 	
